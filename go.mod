@@ -1,4 +1,4 @@
-module github.com/infa-mewilson/EDC_PERF_APM
+module github.com/bhreddy4268/PerfAPM
 
 go 1.12
 
