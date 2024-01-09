@@ -5,7 +5,7 @@ import (
 	"os/exec"
 )
 
-func main() {
+func TokenGenerate() {
 	// Command to run the shell script
 	cmd := exec.Command("/bin/bash", "Generate_Token.sh") // Replace "your_script.sh" with your script's path
 
