@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func main() {
+func Capture_Token() {
 	// Read the content from the text file
 	content, err := ioutil.ReadFile("response.txt")
 	if err != nil {
