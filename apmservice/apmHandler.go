@@ -272,6 +272,7 @@ func compareBuild(w http.ResponseWriter, r *http.Request) {
 
 }
 
+
 func createJson(w http.ResponseWriter, r *http.Request) {
 
 	Hostname := r.URL.Query().Get("hostname")
@@ -281,6 +282,7 @@ func createJson(w http.ResponseWriter, r *http.Request) {
 	Release := r.URL.Query().Get("release")
 	User := r.URL.Query().Get("user")
 	Pass := r.URL.Query().Get("pass")
+	infaToken := r.URL.Query().Get("infaToken")
 
 	if utils.CheckDuplicate(Build, Release, Hostname, ResourceName) {
 		msg := fmt.Sprintf("Data Already Exists for the Resource : %s. Please delete existing data first!", ResourceName)
@@ -306,13 +308,13 @@ func createJson(w http.ResponseWriter, r *http.Request) {
 	var resp *http.Response
 
 	for len(jobData) < 1 {
-		resp, client = utils.LDMLogin(URL, client, User, Pass)
+		resp, client = utils.LDMLogin(URL, client, User, Pass, infaToken)
 
 		if resp == nil {
 			flag = false
 			utils.RespondWithText("Please check hostname or port ", w, r)
 			break
-
+        
 		}
 
 		// split cookie for next request
@@ -324,7 +326,8 @@ func createJson(w http.ResponseWriter, r *http.Request) {
 		if jsonData.Error != "" {
 
 			flag = false
-			utils.RespondWithText("Incorrect username/pass ", w, r)
+			utils.RespondWithText("correct username/pass ", w, r)
+			fmt.Println("infaToken")
 			break
 		}
 
