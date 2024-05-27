@@ -1,6 +1,6 @@
 package config
 
-const ElasticURL = "http://irl75cmgperf07:9200"
+const ElasticURL = "http://invicmgperf0701:9200"
 
 //const ElasticURL = "http://34.196.162.239:9200"
 
